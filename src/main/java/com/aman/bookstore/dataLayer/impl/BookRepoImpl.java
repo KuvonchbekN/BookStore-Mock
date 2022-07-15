@@ -25,7 +25,7 @@ public class BookRepoImpl implements BookRepository {
     @Override
     public Book findById(ID id) {
         for (Book book : books) {
-            if (book.id == id.id)
+            if (book.id.id == id.id)
                 return book;
         }
         return null;
