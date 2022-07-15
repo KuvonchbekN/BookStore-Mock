@@ -1,7 +1,7 @@
 package com.aman.bookstore.service;
 
 import com.aman.bookstore.dataLayer.entity.User;
-import com.aman.bookstore.dataLayer.impl.UserRepoImpl;
+import com.aman.bookstore.dataLayer.exception.NotFoundException;
 import com.aman.bookstore.dataLayer.repo.UserRepository;
 
 public class AuthenticationService {
@@ -16,6 +16,6 @@ public class AuthenticationService {
         if (validate){
             return userRepository.findByUsername(username);
         }
-        return null;
+        throw new NotFoundException("User not found");
     }
 }
