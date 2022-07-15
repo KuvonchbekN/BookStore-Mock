@@ -8,26 +8,26 @@ import java.util.List;
 
 public class BookService {
 
-    private BookRepository bookRepository;
+    private final BookRepository bookRepository;
 
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
     public List<Book> getAllBooks(){
-        return null;
+        return bookRepository.findAll();
     }
 
     public List<Book> getBooksOfGenre(BookGenre bookGenre){
-        return null;
+         return bookRepository.getBooksOfGenre(bookGenre);
     }
 
     public List<Book> searchBookByTitle(String title){
-        return null;
+        return bookRepository.searchBookByTitle(title);
     }
 
     public List<Book> searchBooksByAuthorName(String bookAuthorName){
-        return null;
+        return bookRepository.searchBooksByAuthorName(bookAuthorName);
     }
 
 }

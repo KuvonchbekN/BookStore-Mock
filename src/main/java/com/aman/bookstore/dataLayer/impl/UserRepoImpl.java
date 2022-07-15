@@ -2,6 +2,7 @@ package com.aman.bookstore.dataLayer.impl;
 
 import com.aman.bookstore.dataLayer.entity.ID;
 import com.aman.bookstore.dataLayer.entity.User;
+import com.aman.bookstore.dataLayer.exception.UserNotFoundException;
 import com.aman.bookstore.dataLayer.repo.UserRepository;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class UserRepoImpl implements UserRepository {
                 return user;
             }
         }
-        return null;
+        throw new UserNotFoundException("User not found");
     }
 
     @Override

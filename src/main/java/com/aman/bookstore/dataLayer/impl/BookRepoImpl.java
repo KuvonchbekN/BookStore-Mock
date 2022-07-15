@@ -1,6 +1,7 @@
 package com.aman.bookstore.dataLayer.impl;
 
 import com.aman.bookstore.dataLayer.entity.Book;
+import com.aman.bookstore.dataLayer.entity.BookGenre;
 import com.aman.bookstore.dataLayer.entity.ID;
 import com.aman.bookstore.dataLayer.repo.BookRepository;
 
@@ -34,5 +35,39 @@ public class BookRepoImpl implements BookRepository {
     @Override
     public List<Book> findAll() {
         return books;
+    }
+
+
+    @Override
+    public List<Book> getBooksOfGenre(BookGenre bookGenre) {
+        List<Book> list = new ArrayList<>();
+        for (Book book : books){
+            if (book.bookGenre.bookGenre.equals(bookGenre.bookGenre)){
+                list.add(book);
+            }
+        }
+        return list;
+    }
+
+    @Override
+    public List<Book> searchBookByTitle(String title) {
+        List<Book> list = new ArrayList<>();
+        for (Book book : books){
+            if (book.title.equals(title)){
+                list.add(book);
+            }
+        }
+        return list;
+    }
+
+    @Override
+    public List<Book> searchBooksByAuthorName(String bookAuthorName) {
+        List<Book> list = new ArrayList<>();
+        for (Book book : books){
+            if (book.bookAuthorName.equals(bookAuthorName)){
+                list.add(book);
+            }
+        }
+        return list;
     }
 }

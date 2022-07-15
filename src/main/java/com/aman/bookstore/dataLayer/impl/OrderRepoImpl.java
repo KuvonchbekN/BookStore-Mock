@@ -37,4 +37,27 @@ public class OrderRepoImpl implements OrderRepository {
     public List<Order> findAll() {
         return list;
     }
+
+
+    @Override
+    public List<Order> getOrdersForUser(Integer id) {
+        List<Order> list1 = new ArrayList<>();
+        for (Order order : list){
+            if (order.customer.id.id.equals(id)){
+                list1.add(order);
+            }
+        }
+        return list1;
+    }
+
+    @Override
+    public List<Order> getOrdersForBook(Integer id) {
+        List<Order> list1 = new ArrayList<>();
+        for (Order order : list){
+            if (order.book.id.id.equals(id)){
+                list1.add(order);
+            }
+        }
+        return list1;
+    }
 }
