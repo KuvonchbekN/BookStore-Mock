@@ -6,6 +6,7 @@ import com.aman.bookstore.dataLayer.repo.UserRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class UserRepoImpl implements UserRepository {
     List<User> list = new ArrayList<>();
@@ -13,7 +14,9 @@ public class UserRepoImpl implements UserRepository {
     @Override
     public User findById(ID id) {
         for (User user: list){
-
+            if (Objects.equals(user.id.id, id.id)){
+                return user;
+            }
         }
         return null;
     }
