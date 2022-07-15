@@ -1,4 +1,4 @@
-package org.fdmgroup;
+package com.aman.bookstore;
 
 import static org.junit.Assert.assertTrue;
 
