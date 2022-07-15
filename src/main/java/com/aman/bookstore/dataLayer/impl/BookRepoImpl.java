@@ -3,6 +3,7 @@ package com.aman.bookstore.dataLayer.impl;
 import com.aman.bookstore.dataLayer.entity.Book;
 import com.aman.bookstore.dataLayer.entity.BookGenre;
 import com.aman.bookstore.dataLayer.entity.ID;
+import com.aman.bookstore.dataLayer.exception.NotFoundException;
 import com.aman.bookstore.dataLayer.repo.BookRepository;
 
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class BookRepoImpl implements BookRepository {
             if (book.id.id == id.id)
                 return book;
         }
-        return null;
+        throw new NotFoundException("Item not found");
     }
 
     @Override
@@ -64,7 +65,7 @@ public class BookRepoImpl implements BookRepository {
     public List<Book> searchBooksByAuthorName(String bookAuthorName) {
         List<Book> list = new ArrayList<>();
         for (Book book : books){
-            if (book.bookAuthorName.equals(bookAuthorName)){
+            if (book.bookAuthorName.toLowerCase().contains(bookAuthorName.toLowerCase())){
                 list.add(book);
             }
         }
